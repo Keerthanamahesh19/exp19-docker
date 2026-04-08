@@ -4,17 +4,13 @@ pipeline {
     stages {
         stage('Build Docker Image') {
             steps {
-                script {
-                    docker.build("my-python-app")
-                }
+                bat 'docker build -t my-python-app .'
             }
         }
 
         stage('Run Container') {
             steps {
-                script {
-                    docker.image("my-python-app").run()
-                }
+                bat 'docker run my-python-app'
             }
         }
     }
